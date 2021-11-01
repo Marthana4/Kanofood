@@ -14,15 +14,14 @@ class LoginController extends Controller
     }
 
     public function postlogin(Request $req){
-       if(Auth::attempt($req->only('email','password'))){
-           return redirect('/home');
-       }
-       return redirect('/login');
+        if(Auth::attempt($req->only('email','password'))){
+            return redirect('/home');
+        }
+        return redirect('/')->with('toast_error','Username or Password is wrong');
     }
-
     public function logout(){
         Auth::logout();
-        return redirect('/login');
+        return redirect('/');
      }
 
      public function register(){
@@ -32,11 +31,14 @@ class LoginController extends Controller
      public function simpanregister(Request $req){
         User::create([
             'name'=>$req->name,
+            'no_hp'=>$req->no_hp,
+            'gender'=>$req->gender,
+            'tanggal_lahir'=>$req->tanggal_lahir,
             'level'=>'customer',
             'email'=>$req->email,
             'password'=>bcrypt($req->password),
             'remember_token'=> Str::random(60),
         ]);
-        return view('welcome');
+        return redirect('/register')->with('success', 'Registrasi Berhasil, Silahkan Log In!');
     }
 }

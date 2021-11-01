@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Store;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -16,8 +17,13 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
+     protected $table ="users";
+     protected $primaryKey = 'id';
+     protected $fillable = [
         'name',
+        'no_hp',
+        'gender',
+        'tanggal_lahir',
         'level',
         'email',
         'password',

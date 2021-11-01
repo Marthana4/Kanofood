@@ -1,71 +1,63 @@
-
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html lang="en">
 <head>
-<title>KanoFood | Homepage</title>
-@include('Template.head')  
-
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <title>KanoFood</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  @include('Template.head')  
 </head>
-<body class="hold-transition sidebar-mini">
-<div class="wrapper">
 
-  <!-- Navbar -->
+<body>
+  <div id="app">
+    <div class="main-wrapper">
+      
+      <!-- Navbar -->
   @include('Template.navbar') 
   <!-- /.navbar -->
 
-  <!-- Main Sidebar Container -->
-  @include('Template.left-sidebar') 
+  <!-- Sidebar Menu -->
+  @include('Template.left-sidebar')
+ <!-- /.sidebar -->
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Ingin Makan apa Hari ini?</h1>
-          </div><!-- /.col -->
-          
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
+        <!-- Main Content -->
+      <div class="main-content">
+        <section class="content">
+        @yield('content') 
+        </section>
+      </div>
+
     </div>
-    <!-- /.content-header -->
-    <!-- Main content -->
-    <section class="content">
-      @yield('content')
+ 
+  
+             <!-- Main Footer -->
+             @include('Template.footer')
 
-    </section>
-    
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+  <!-- General JS Scripts -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="{{asset('stisla-master/assets/js/stisla.js')}}"></script>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-    <div class="p-3">
-      <h5>Title</h5>
-      <p>Sidebar content</p>
-    </div>
-  </aside>
-  <!-- /.control-sidebar -->
+  <!-- JS Libraies -->
+  <script src="{{asset('stisla-master/node_modules/jquery-sparkline/jquery.sparkline.min.js')}}"></script>
+  <script src="{{asset('stisla-master/node_modules/chart.js/dist/Chart.min.js')}}"></script>
+  <script src="{{asset('stisla-master/node_modules/owl.carousel/dist/owl.carousel.min.js')}}"></script>
+  <script src="{{asset('stisla-master/node_modules/summernote/dist/summernote-bs4.js')}}"></script>
+  <script src="{{asset('stisla-master/node_modules/chocolat/dist/js/jquery.chocolat.min.js')}}"></script>
+  <script src="{{asset('stisla-master/node_modules/sweetalert/dist/sweetalert.min.js')}}"></script>
 
-  <!-- Main Footer -->
-  @include('Template.footer') 
-</div>
-<!-- ./wrapper -->
+  <!-- Template JS File -->
+  <script src="{{asset('stisla-master/assets/js/scripts.js')}}"></script>
+  <script src="{{asset('stisla-master/assets/js/custom.js')}}"></script>
 
-<!-- REQUIRED SCRIPTS -->
+  <!-- Page Specific JS File -->
+  <script src="{{asset('stisla-master/assets/js/page/index.js')}}"></script>
+  <script src="{{asset('stisla-master/assets/js/page/modules-sweetalert.js')}}"></script>
 
-<!-- jQuery -->
-<script src="{{asset ('AdminLTe/plugins/jquery/jquery.min.js')}}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{asset ('AdminLTe/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<!-- AdminLTE App -->
-<script src="{{asset ('AdminLTe/dist/js/adminlte.min.js')}}"></script>
+  <!-- Sweet alert -->
+  @include('sweetalert::alert')
 </body>
 </html>

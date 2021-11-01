@@ -1,83 +1,126 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>KanoFood | Registration Page</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <title>Register &mdash; KanoFood</title>
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{asset ('AdminLTe/plugins/fontawesome-free/css/all.min.css')}}">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="{{asset ('AdminLTe/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{asset ('AdminLTe/dist/css/adminlte.min.css')}}">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- General CSS Files -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+  <!-- CSS Libraries -->
+  <link rel="stylesheet" href="{{asset('stisla-master/node_modules/bootstrap-daterangepicker/daterangepicker.css')}}">
+  <link rel="stylesheet" href="{{asset('stisla-master/node_modules/selectric/public/selectric.css')}}">
+  <link rel="stylesheet" href="{{asset('stisla-master/node_modules/bootstrap-timepicker/css/bootstrap-timepicker.min.css')}}">
+
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="{{asset('stisla-master/assets/css/style.css')}}">
+  <link rel="stylesheet" href="{{asset('stisla-master/assets/css/components.css')}}">
 </head>
-<body class="hold-transition register-page">
-<div class="register-box">
-  <div class="register-logo">
-    <a href="../../index2.html"><b>Kano</b>Food</a>
+
+<body>
+  <div id="app">
+    <section class="section">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
+            <div class="login-brand">
+              <img src="{{asset('stisla-master/assets/img/logo.png')}}" alt="logo" width="200" >
+            </div>
+
+            <div class="card card-primary">
+              <div class="card-header"><h4>Register</h4></div>
+
+              <div class="card-body">
+                <form action="{{route('simpanregister')}}" method="post">
+                {{csrf_field()}}
+                  <div class="row">
+                    <div class="form-group col-6">
+                      <label for="name">Nama</label>
+                      <input type="text" class="form-control" name="name" autofocus>
+                    </div>
+                    <div class="form-group col-6">
+                      <label for="no_hp">No Handphone</label>
+                      <input type="text" class="form-control" name="no_hp">
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="form-group col-6">
+                      <label>Gender</label>
+                      <select class="form-control selectric" name="gender">
+                        <option value="">--pilih gender--</option>
+                        <option value="L">Laki-Laki</option>
+                        <option value="P">Perempuan</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-6">
+                      <label>Tanggal Lahir</label>
+                      <input type="date" class="form-control datepicker" name="tanggal_lahir">
+                    </div>
+                  </div>
+
+                  <div class="form-divider">
+                    Username & Password
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-6">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email">
+                    <div class="invalid-feedback">
+                    </div>
+                    </div>
+                    <div class="form-group col-6">
+                    <label for="password" class="d-block">Password</label>
+                      <input type="password" class="form-control" name="password">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">
+                      Register
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <div class="mt-5 text-muted text-center">
+              I already have an account <a href="{{route('login')}}">Sign In</a>
+            </div>
+
+            <div class="simple-footer">
+              Copyright &copy; Kanosolution 2021/2022.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 
-  <div class="card">
-    <div class="card-body register-card-body">
-      <p class="login-box-msg">Register a new membership</p>
+  <!-- General JS Scripts -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="{{asset('stisla-master/assets/js/stisla.js')}}"></script>
 
-      <form action="{{route('simpanregister')}}" method="post">
-        {{csrf_field()}}
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" name="name" placeholder="Full name">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-user"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="email" class="form-control" name="email" placeholder="Email">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="password" class="form-control" name="password" placeholder="Password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-8">
-          </div>
-          <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Register</button>
-          </div>
-          <!-- /.col -->
-        </div>
-      </form>
+  <!-- JS Libraies -->
+  <script src="{{asset('stisla-master/node_modules/jquery-pwstrength/jquery.pwstrength.min.js')}}"></script>
+  <script src="{{asset('stisla-master/node_modules/selectric/public/jquery.selectric.min.js')}}"></script>
+  <script src="{{asset('stisla-master/node_modules/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+  <script src="{{asset('stisla-master/node_modules/bootstrap-timepicker/js/bootstrap-timepicker.min.js')}}"></script>
 
-      <a href={{route('login')}} class="text-center">I already have a membership</a>
-    </div>
-    <!-- /.form-box -->
-  </div><!-- /.card -->
-</div>
-<!-- /.register-box -->
+  <!-- Template JS File -->
+  <script src="{{asset('stisla-master/assets/js/scripts.js')}}"></script>
+  <script src="{{asset('stisla-master/assets/js/custom.js')}}"></script>
 
-<!-- jQuery -->
-<script src="{{asset ('AdminLTe/plugins/jquery/jquery.min.js')}}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{asset ('AdminLTe/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<!-- AdminLTE App -->
-<script src="{{asset ('AdminLTe/dist/js/adminlte.min.js')}}"></script>
+  <!-- Page Specific JS File -->
+  <script src="{{asset('stisla-master/assets/js/page/auth-register.js')}}"></script>
+
+  <!-- Sweet alert -->
+  @include('sweetalert::alert')
 </body>
 </html>

@@ -1,88 +1,112 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="AdminLTe/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block">{{auth()->user()->name}}</a>
-        </div>
-      </div>
-
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-            @if (auth()->user()->level == "customer")
-            <li class="nav-item">
-            <a href="/beranda" class="nav-link">
-            <i class="nav-icon fas fa-home"></i>
-                <p>
-                Beranda
-                </p>
+<div class="main-sidebar">
+        <aside id="sidebar-wrapper">
+          <div class="sidebar-brand">
+          <img src="{{asset('stisla-master/assets/img/logokf.png')}}" width="150px" >
+          </div>
+          <div class="sidebar-brand sidebar-brand-sm">
+          <img src="{{asset('stisla-master/assets/img/logokf2.png')}}" width="30px">
+          </div>
+          <ul class="sidebar-menu">
+              <li class="menu-header">Dashboard</li>
+              <li><a class="nav-link" href="/beranda"><i class="far fa-square"></i> <span>Beranda</span></a></li>
+              <li class="menu-header">Starter</li>
+          </li>
+          <!-- Left side menu ADMIN -->
+          @if (auth()->user()->level == "admin")
+          <li class="nav-item">
+            <a href="/users" class="nav-link">
+            <i class="fas fa-user"></i>
+                <span>
+                Users
+                </span>
             </a>
-            </li>     
-            @endif
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-user"></i>
-              <p>
-                User
-                <i class="right fas fa-angle-left"></i>
-              </p>
+          </li>
+          <li class="nav-item">
+            <a href="/store-admin" class="nav-link">
+            <i class="fas fa-home"></i>
+                <span>
+                Store
+                </span>
             </a>
-            <ul class="nav nav-treeview">
-            @if (auth()->user()->level == "customer")
-              <li class="nav-item">
-                <a href="/customer" class="nav-link inactive">
-                  <i class="nav-icon fas fa-user"></i>
-                  <p>Customer</p>
-                </a>
-              </li>
-            @endif
-            @if (auth()->user()->level == "agent")
-              <li class="nav-item">
-                <a href="/agent" class="nav-link inactive">
-                  <i class="nav-icon fas fa-user"></i>
-                  <p>Agent</p>
-                </a>
-              </li>
-            @endif
-            @if (auth()->user()->level == "seller")
-              <li class="nav-item">
-                <a href="/seller" class="nav-link inactive">
-                  <i class="nav-icon fas fa-user"></i>
-                  <p>Seller</p>
-                </a>
-              </li>
-            @endif
-            @if (auth()->user()->level == "admin")
-              <li class="nav-item">
-                <a href="/admin" class="nav-link inactive">
-                  <i class="nav-icon fas fa-user"></i>
-                  <p>Admin</p>
-                </a>
-              </li>
-            @endif
+          </li>
+          <li class="nav-item">
+            <a href="/food-admin" class="nav-link">
+            <i class="fas fa-utensils"></i>
+                <span>
+                Food
+               </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/order-admin" class="nav-link">
+            <i class="fas fa-columns"></i> 
+                <span>
+                Order
+                </span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/payment" class="nav-link">
+            <i class="fas fa-dollar-sign"></i> 
+                <span>
+                Payment
+                </span>
+            </a>
+          </li>
+          @endif
+          <!-- Left side menu SELLER -->
+          @if (auth()->user()->level == "seller")
+          <li class="nav-item">
+            <a href="/dashboard" class="nav-link">
+            <i class="fas fa-home"></i>
+                <span>
+                Store
+                </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/order-seller" class="nav-link">
+            <i class="fas fa-columns"></i> 
+                <span>
+                Order
+                </span>
+            </a>
+          </li>
+          @endif
+          <!-- Left side menu AGENT -->
+          @if (auth()->user()->level == "agent")
+          <li class="nav-item">
+            <a href="/order-agent" class="nav-link">
+            <i class="fas fa-columns"></i> 
+                <span>
+                Order
+                </span>
+            </a>
+          </li>
+          @endif
+          <!-- Left side menu CUSTOMER -->
+          @if (auth()->user()->level == "customer")
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link has-dropdown"><i class="fas fa-columns"></i> <span>Order</span></a>
+            <ul class="dropdown-menu">
+              <li><a class="nav-link" href="/order-food">Order Food</a></li>
+              <li><a class="nav-link" href="/order-cust">Order Process</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a href="{{ route('logout') }}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Logout
-                
-              </p>
+            <a href="/payment_customer" class="nav-link">
+            <i class="fas fa-dollar-sign"></i> 
+                <span>
+                Payment
+                </span>
             </a>
           </li>
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
+          @endif
+            
+          </li>
+            
+
+        </aside>
+        <!-- /.sidebar-menu -->
+      </div>

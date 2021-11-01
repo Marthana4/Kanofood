@@ -26,7 +26,8 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string|null
      */
-    // protected $namespace = 'App\\Http\\Controllers';
+    // namespace ini sebagai default dari directory controller
+    protected $namespace = 'App\\Http\\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -37,6 +38,9 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->configureRateLimiting();
 
+        // di route ini mendefiniskan route-route yang dipakai
+        // jadi setelah $namespace di tambahkan maka di routes/web.php dan routes/api.php
+        // tidak perlu import controller lagi secara manual cukup memanggil nama classnya saja
         $this->routes(function () {
             Route::prefix('api')
                 ->middleware('api')
